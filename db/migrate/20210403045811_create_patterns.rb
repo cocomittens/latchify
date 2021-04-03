@@ -4,8 +4,6 @@ class CreatePatterns < ActiveRecord::Migration[6.1]
       t.string :title, null:false
       t.binary :img, null:false
       t.integer :author_id, null:false
-      t.datetime :created_at, null:false
-      t.datetime :updated_at, null:false
 
       t.timestamps
     end
