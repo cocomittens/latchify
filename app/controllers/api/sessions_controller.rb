@@ -1,19 +1,23 @@
 class Api::SessionsController < ApplicationController
+    def new
+        render '/api/sessions/new'
+      end
+    
+
     def create
-        @user = User.find_by_credentials(params[:user][:email], params[:user][:password])
-        if @user
-            login!(@user)
-        else
-            render json: {errors: "Invalid credentials"}, status: :unauthorized
-        end
+    @user = User.find_by_credentials(params[:user][:username], params[:user][:password])
+
+    if @user.nil?
+      flash.now[:errors] = ['Invalid username or password.']
+      render :new
+    else
+      login!(@user)
+      redirect_to user_url(@user)
+    end
     end
 
     def destroy
-        if current_user
-            logout!
-            render json: {}
-        else
-            render json: {}, status: :not_found
-        end
+        logout!
+        redirect_to new_session_url
     end
 end

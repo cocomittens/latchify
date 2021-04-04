@@ -1,7 +1,7 @@
 const path = require("path");
 
 module.exports = {
-  entry: "./frontend/latchify.jsx",
+  entry: "./app/javascript/packs/latchify.jsx",
   output: {
     path: path.resolve(__dirname, "app", "assets", "javascripts"),
     filename: "bundle.js",
@@ -13,12 +13,12 @@ module.exports = {
         exclude: /node_modules/,
         loader: "babel-loader",
         query: {
-          presets: ["env", "react"],
+          presets: ["@babel/env", "@babel/react"],
         },
       },
     ],
   },
-  devtool: "source-map",
+  devtool: "inline-source-map",
   resolve: {
     extensions: [".js", ".jsx", "*"],
   },

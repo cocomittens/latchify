@@ -32,6 +32,10 @@ gem 'pg'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'better_errors', '~> 2.9', '>= 2.9.1'
 gem 'binding_of_caller', '~> 1.0'
+gem 'pry-rails', '~> 0.3.9'
+gem 'annotate', '~> 3.1', '>= 3.1.1'
+gem 'jquery-rails', '~> 4.4'
+gem 'react-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
