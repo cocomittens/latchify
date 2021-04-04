@@ -2,10 +2,12 @@ class Api::PatternsController < ApplicationController
     skip_before_action :verify_authenticity_token
     def index
         @user = User.find_by(email: params[:user_id])
+        render json: @user
     end
 
     def show
         @pattern = Pattern.find(params[:id])
+        render 'show.html.erb'
     end
 
     def new
@@ -15,7 +17,7 @@ class Api::PatternsController < ApplicationController
     def create
         @pattern = Pattern.new(pattern_params)
         if @pattern.save
-            render json: params
+            render 'show.html.erb'
         else
             render json: @pattern.errors.full_messages, status: :unprocessable_entity
         end
