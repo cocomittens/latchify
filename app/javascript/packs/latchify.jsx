@@ -5,7 +5,6 @@ import Root from "../components/Root";
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
-  console.log(root);
   let store;
   if (window.currentUser) {
     let user = Object.values(window.currentUser)[0];

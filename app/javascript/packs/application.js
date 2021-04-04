@@ -6,9 +6,13 @@
 import Rails from "@rails/ujs";
 import * as ActiveStorage from "@rails/activestorage";
 import "channels";
+import "jquery";
+import "jquery-ujs";
 
 //= require jquery
 //= require rails-ujs
+
+require("jquery");
 Rails.start();
 ActiveStorage.start();
 // Support component names relative to this directory:
