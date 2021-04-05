@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Grid } from "@material-ui/core";
+import { Button, Grid, Typography } from "@material-ui/core";
 import ImageUploading from "react-images-uploading";
 
 export default () => {
@@ -37,10 +37,13 @@ export default () => {
               direction="column"
               justify="center"
               alignContent="center"
+              spacing={2}
             >
               <Grid item>
+                <Typography variant="h2">Upload</Typography>
+              </Grid>
+              <Grid item>
                 <Button
-                  style={isDragging ? { color: "red" } : undefined}
                   onClick={onImageUpload}
                   {...dragProps}
                   variant="contained"
