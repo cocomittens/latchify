@@ -12,10 +12,12 @@ export default () => {
       spacing={2}
     >
       <Grid item>
-        <Typography variant="h1">Latchify</Typography>
+        <Typography variant="h1" align="center">
+          Latchify
+        </Typography>
       </Grid>
       <Grid item>
-        <Typography variant="h3">
+        <Typography variant="h3" align="center">
           Create custom latch hook patterns with any photo.
         </Typography>
       </Grid>

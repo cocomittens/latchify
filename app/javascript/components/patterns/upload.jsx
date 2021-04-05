@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button } from "@material-ui/core";
+import { Button, Grid } from "@material-ui/core";
 import ImageUploading from "react-images-uploading";
 
 export default () => {
@@ -32,14 +32,23 @@ export default () => {
         }) => (
           // write your building UI
           <div className="upload__image-wrapper">
-            <Button
-              style={isDragging ? { color: "red" } : undefined}
-              onClick={onImageUpload}
-              {...dragProps}
-              variant="contained"
+            <Grid
+              container
+              direction="column"
+              justify="center"
+              alignContent="center"
             >
-              Click or Drop here
-            </Button>
+              <Grid item>
+                <Button
+                  style={isDragging ? { color: "red" } : undefined}
+                  onClick={onImageUpload}
+                  {...dragProps}
+                  variant="contained"
+                >
+                  Click or Drop here
+                </Button>
+              </Grid>
+            </Grid>
           </div>
         )}
       </ImageUploading>
