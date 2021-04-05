@@ -2,15 +2,13 @@ import React, { useState } from "react";
 import { Button, TextField, Typography, Grid } from "@material-ui/core";
 
 const Signup = (props) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setconfirmPassword] = useState("");
-
   const handleSubmit = (e) => {
+    const email = document.forms["signup"]["email"].value;
+    const password = document.forms["signup"]["password"].value;
     e.preventDefault();
     props
       .createNewUser({ email, password })
-      .then(() => props.history.push("/patterns"));
+      .then(() => props.history.push("/success"));
   };
 
   return (
@@ -25,11 +23,12 @@ const Signup = (props) => {
       <Grid item>
         <Typography variant="h1">Sign Up</Typography>
       </Grid>
-      <form>
+      <form name="signup">
         <Grid item>
           <TextField
             autoFocus
             required
+            name="email"
             helperText="Email"
             variant="outlined"
           ></TextField>
@@ -38,6 +37,7 @@ const Signup = (props) => {
           <TextField
             autoFocus
             required
+            name="password"
             helperText="Password"
             type="password"
             variant="outlined"
@@ -46,8 +46,8 @@ const Signup = (props) => {
         <Grid item>
           <TextField
             autoFocus
-            required
             helperText="Confirm Password"
+            type="password"
             variant="outlined"
           ></TextField>
         </Grid>
