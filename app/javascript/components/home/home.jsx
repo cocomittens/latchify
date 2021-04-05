@@ -1,13 +1,27 @@
 import React from "react";
+import { Button, Typography, Grid } from "@material-ui/core";
 
-export default () => (
-  <div className="home">
-    <div className="hero-img-frame">
-      <img
-        className="hero-img"
-        src="https://pmcvariety.files.wordpress.com/2017/02/angry-birds-blues-rovio.jpg?w=1000&h=750&crop=1"
-      />
-    </div>
-    <h1>Where patterns are generated.</h1>
-  </div>
-);
+export default () => {
+  return (
+    <Grid
+      container
+      justify="center"
+      wrap="nowrap"
+      direction="column"
+      alignItems="center"
+      spacing={2}
+    >
+      <Grid item>
+        <Typography variant="h1">Latchify</Typography>
+      </Grid>
+      <Grid item>
+        <Typography variant="h3">
+          Create custom latch hook patterns with any photo.
+        </Typography>
+      </Grid>
+      <Grid item>
+        <Button variant="contained">Get Started</Button>
+      </Grid>
+    </Grid>
+  );
+};

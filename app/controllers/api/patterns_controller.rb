@@ -43,6 +43,6 @@ class Api::PatternsController < ApplicationController
 
     private
     def pattern_params
-        params.require(:pattern).permit(:title, :author_id, :img, :yarn_grid)
+        params.require(:pattern).permit(:title, :author_id, :photo)
     end
 end
