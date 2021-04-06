@@ -12,7 +12,8 @@ const useStyles = makeStyles({
   },
   gradient: {
     background: "linear-gradient(45deg, #6C63FF 30%, #3700B3 90%)",
-    padding: 0,
+    width: "100vw",
+    marginTop: -8,
   },
   topBg: {
     zIndex: 2,
@@ -20,8 +21,8 @@ const useStyles = makeStyles({
   bottomBg: {
     backgroundColor: "#fff",
     width: "100%",
-    height: ({ height }) => height,
-    marginTop: ({ height }) => -height / 2,
+    height: ({ height }) => height - 8,
+    marginTop: ({ height }) => -height / 2 - 8,
   },
 });
 
@@ -60,7 +61,15 @@ export default () => {
               Create custom latch hook patterns with any photo.
             </Typography>
           </Grid>
-          <Grid item className={classes.topBg} lg={4}>
+          <Grid
+            item
+            className={classes.topBg}
+            xs={10}
+            sm={9}
+            md={8}
+            lg={7}
+            xl={6}
+          >
             <img
               ref={ref}
               className={classes.svg}
