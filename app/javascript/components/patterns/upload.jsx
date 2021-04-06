@@ -1,15 +1,40 @@
 import React, { useState } from "react";
 import { Button, Grid, Typography } from "@material-ui/core";
 import ImageUploading from "react-images-uploading";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles({
+  svg: {
+    width: "20vw",
+    height: "auto",
+  },
+  input: {
+    width: "40vw",
+  },
+  uploadSquare: {
+    border: "3px dashed grey",
+    cursor: "pointer",
+  },
+  header: {
+    fontFamily: "raleway",
+  },
+});
 
 export default () => {
+  const classes = useStyles();
+
   const [images, setImages] = useState([]);
   const maxNumber = 69;
+  console.log(images);
 
   const onChange = (imageList, addUpdateIndex) => {
     // data for submit
     console.log(imageList, addUpdateIndex);
     setImages(imageList);
+  };
+
+  const onImgUpload = () => {
+    props.history.push("/results");
   };
 
   return (
@@ -40,16 +65,26 @@ export default () => {
               spacing={2}
             >
               <Grid item>
-                <Typography variant="h2">Upload</Typography>
+                <Typography
+                  className={classes.header}
+                  variant="h1"
+                  align="center"
+                >
+                  Upload
+                </Typography>
               </Grid>
-              <Grid item>
-                <Button
+              <Grid item className={classes.uploadSquare}>
+                <img
+                  className={classes.svg}
                   onClick={onImageUpload}
                   {...dragProps}
-                  variant="contained"
-                >
-                  Click or Drop here
-                </Button>
+                  src={require("../../../assets/images/add_files.svg")}
+                />
+              </Grid>
+              <Grid item>
+                <Typography align="center" variant="subtitle1">
+                  Accepted file formats: .png, .jpg
+                </Typography>
               </Grid>
             </Grid>
           </div>

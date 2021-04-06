@@ -1,12 +1,24 @@
 import React, { useEffect } from "react";
 import { Button, Typography, Grid } from "@material-ui/core";
-import { pixelit } from "../../packs/pixelit/dist/pixelit";
+import { pixelit } from "../../packs/pixelit/dist/pixelitmin";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles({
+  svg: {
+    width: "20vw",
+    height: "auto",
+  },
+  input: {
+    width: "40vw",
+  },
+});
 
 export default () => {
+  const classes = useStyles();
+
   useEffect(() => {
     const px = new pixelit();
     px.draw().pixelate().resizeImage();
-    console.log(px);
   }, []);
   return (
     <div className="home">
@@ -29,7 +41,9 @@ export default () => {
           <canvas id="pixelitcanvas"></canvas>
         </Grid>
         <Grid item>
-          <Button variant="contained">Download</Button>
+          <Button color="secondary" variant="contained">
+            Download
+          </Button>
         </Grid>
         <Grid item>
           <Typography variant="subtitle1">
@@ -37,7 +51,9 @@ export default () => {
           </Typography>
         </Grid>
         <Grid item>
-          <Button variant="contained">Sign Up</Button>
+          <Button color="secondary" variant="contained">
+            Sign Up
+          </Button>
         </Grid>
       </Grid>
     </div>
