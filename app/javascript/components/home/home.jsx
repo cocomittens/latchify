@@ -12,8 +12,6 @@ const useStyles = makeStyles({
   },
   gradient: {
     background: "linear-gradient(45deg, #6C63FF 30%, #3700B3 90%)",
-    width: "100vw",
-    marginTop: -8,
   },
   topBg: {
     zIndex: 2,
@@ -21,8 +19,8 @@ const useStyles = makeStyles({
   bottomBg: {
     backgroundColor: "#fff",
     width: "100%",
-    height: ({ height }) => height - 8,
-    marginTop: ({ height }) => -height / 2 - 8,
+    height: ({ height }) => height,
+    marginTop: ({ height }) => -height / 2,
   },
 });
 
@@ -50,6 +48,7 @@ export default () => {
           wrap="nowrap"
           direction="column"
           alignItems="center"
+          spacing={2}
         >
           <Grid item>
             <Typography className={classes.white} variant="h1" align="center">
