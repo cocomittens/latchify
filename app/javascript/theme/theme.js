@@ -13,6 +13,13 @@ const theme = createMuiTheme({
     secondary: { main: "#03DAC5" },
   },
   overrides: {
+    MuiGrid: {
+      item: {
+        "& a": {
+          textDecoration: "none",
+        },
+      },
+    },
     MuiTypography: {
       root: {
         fontFamily: "roboto",
@@ -33,8 +40,14 @@ const theme = createMuiTheme({
 });
 
 theme.typography.h1 = {
+  [theme.breakpoints.down("xl")]: {
+    fontSize: "5vw",
+  },
   [theme.breakpoints.down("lg")]: {
-    fontSize: "4vw",
+    fontSize: "6vw",
+  },
+  [theme.breakpoints.down("md")]: {
+    fontSize: "7vw",
   },
   [theme.breakpoints.down("sm")]: {
     fontSize: "8vw",
@@ -45,10 +58,13 @@ theme.typography.h1 = {
 };
 
 theme.typography.h3 = {
-  [theme.breakpoints.down("lg")]: {
+  [theme.breakpoints.down("xl")]: {
     fontSize: "2vw",
   },
-  [theme.breakpoints.down("sm")]: {
+  [theme.breakpoints.down("lg")]: {
+    fontSize: "3vw",
+  },
+  [theme.breakpoints.down("md")]: {
     fontSize: "4vw",
   },
   [theme.breakpoints.down("xs")]: {
@@ -57,6 +73,9 @@ theme.typography.h3 = {
 };
 
 theme.typography.button = {
+  [theme.breakpoints.down("xl")]: {
+    fontSize: "1.2rem",
+  },
   [theme.breakpoints.down("lg")]: {
     fontSize: "1.1rem",
   },

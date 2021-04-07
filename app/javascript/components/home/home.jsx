@@ -2,6 +2,7 @@ import { Button, Grid, MobileStepper, Typography } from "@material-ui/core";
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@material-ui/icons";
 import React, { useEffect, useState } from "react";
 
+import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { useResizeDetector } from "react-resize-detector";
 
@@ -110,9 +111,11 @@ export default () => {
         alignItems="center"
       >
         <Grid item className={classes.button}>
-          <Button variant="contained" color="primary" size="large">
-            <Typography variant="button">GET STARTED</Typography>
-          </Button>
+          <Link to="/upload">
+            <Button variant="contained" color="primary" size="large">
+              <Typography variant="button">GET STARTED</Typography>
+            </Button>
+          </Link>
         </Grid>
       </Grid>
       <MobileStepper

@@ -1,11 +1,12 @@
-import React from "react";
-import Home from "./home/home";
 import { Route, Switch } from "react-router-dom";
-import SignupContainer from "./session/signup_container";
+
+import Home from "./home/home";
 import LoginContainer from "./session/login_container";
-import Upload from "./patterns/upload";
+import React from "react";
 import Results from "./patterns/results";
-import Confirm from "./session/confirm";
+import SignupContainer from "./session/signup_container";
+import Success from "./session/success";
+import Upload from "./patterns/upload";
 
 export default () => {
   return (
@@ -14,7 +15,7 @@ export default () => {
       <Route path="/login" component={LoginContainer} />
       <Route path="/upload" component={Upload} />
       <Route path="/results" component={Results} />
-      <Route path="/success" component={Confirm} />
+      <Route path="/success" component={Success} />
       <Route exact path="/" component={Home} />
     </Switch>
   );

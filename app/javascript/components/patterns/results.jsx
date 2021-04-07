@@ -1,25 +1,27 @@
-import React, { useEffect } from "react";
-import { Button, Typography, Grid } from "@material-ui/core";
-import { pixelit } from "../../packs/pixelit/dist/pixelit";
+import { Button, Grid, Typography } from "@material-ui/core";
+import React, { useEffect, useState } from "react";
+import { connect, useSelector } from "react-redux";
+
 import { makeStyles } from "@material-ui/core/styles";
+import { pixelit } from "../../packs/pixelit/dist/pixelit";
 
 const useStyles = makeStyles({
-  svg: {
-    width: "20vw",
-    height: "auto",
-  },
-  input: {
-    width: "40vw",
+  canvas: {
+    width: "100%",
+    maxHeight: "60vw",
   },
 });
 
-export default () => {
+export const Results = (props) => {
   const classes = useStyles();
+  const photo = useSelector((state) => state.pattern.photo);
+  const [pattern, setPattern] = useState(null);
 
   useEffect(() => {
     const px = new pixelit();
     px.draw().pixelate().resizeImage();
-  }, []);
+    setPattern(px);
+  }, [photo]);
   return (
     <div className="home">
       <Grid
@@ -32,16 +34,16 @@ export default () => {
         <Grid item>
           <Typography variant="h1">Results</Typography>
         </Grid>
-        <Grid item>
-          <img
-            src="data:image/jpeg;base64,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"
-            id="pixelitimg"
-            alt=""
-          />
-          <canvas id="pixelitcanvas"></canvas>
+        <Grid item xs={10} md={8} lg={6}>
+          <img src={photo} id="pixelitimg" alt="" />
+          <canvas className={classes.canvas} id="pixelitcanvas"></canvas>
         </Grid>
         <Grid item>
-          <Button color="secondary" variant="contained">
+          <Button
+            color="primary"
+            variant="contained"
+            onClick={() => pattern.saveImage()}
+          >
             Download
           </Button>
         </Grid>
@@ -51,11 +53,19 @@ export default () => {
           </Typography>
         </Grid>
         <Grid item>
-          <Button color="secondary" variant="contained">
+          <Button color="primary" variant="outlined">
             Sign Up
+          </Button>
+          <Typography variant="subtitle1" align="center">
+            or
+          </Typography>
+          <Button color="primary" variant="outlined">
+            Log In
           </Button>
         </Grid>
       </Grid>
     </div>
   );
 };
+
+export default Results;

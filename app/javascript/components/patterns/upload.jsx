@@ -1,46 +1,37 @@
-import React, { useState } from "react";
 import { Button, Grid, Typography } from "@material-ui/core";
+import { RECEIVE_PHOTO, receivePhoto } from "../../actions/pattern";
+import React, { useState } from "react";
+
 import ImageUploading from "react-images-uploading";
+import { connect } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
   svg: {
-    width: "20vw",
-    height: "auto",
-  },
-  input: {
-    width: "40vw",
+    width: "100%",
   },
   uploadSquare: {
     border: "3px dashed grey",
+    borderRadius: "10px",
     cursor: "pointer",
-  },
-  header: {
-    fontFamily: "raleway",
   },
 });
 
-export default () => {
+const Pattern = (props) => {
   const classes = useStyles();
-
   const [images, setImages] = useState([]);
-  const maxNumber = 69;
-  console.log(images);
+  const maxNumber = 1;
 
   const onChange = (imageList, addUpdateIndex) => {
     // data for submit
     console.log(imageList, addUpdateIndex);
-    setImages(imageList);
-  };
-
-  const onImgUpload = () => {
+    setImages(imageList[0]);
+    props.receivePhoto(imageList[0].data_url);
     props.history.push("/results");
   };
-
   return (
     <div className="upload">
       <ImageUploading
-        multiple
         value={images}
         onChange={onChange}
         maxNumber={maxNumber}
@@ -64,27 +55,62 @@ export default () => {
               alignContent="center"
               spacing={2}
             >
-              <Grid item>
+              <Grid item xs={8}>
                 <Typography
+                  gutterBottom
                   className={classes.header}
-                  variant="h1"
+                  variant="h2"
                   align="center"
                 >
                   Upload
                 </Typography>
               </Grid>
-              <Grid item className={classes.uploadSquare}>
-                <img
-                  className={classes.svg}
-                  onClick={onImageUpload}
-                  {...dragProps}
-                  src={require("../../../assets/images/add_files.svg")}
-                />
-              </Grid>
-              <Grid item>
-                <Typography align="center" variant="subtitle1">
-                  Accepted file formats: .png, .jpg
-                </Typography>
+              <Grid
+                container
+                item
+                className={classes.uploadSquare}
+                onClick={onImageUpload}
+                {...dragProps}
+                justify="center"
+                alignItems="center"
+                xs={10}
+                sm={8}
+                md={7}
+                lg={6}
+                direction="column"
+                spacing={1}
+              >
+                <Grid item>
+                  <Typography
+                    gutterBottom
+                    className={classes.header}
+                    variant="h3"
+                    align="center"
+                  >
+                    Select image to latchify
+                  </Typography>
+                </Grid>
+                <Grid item xs={8}>
+                  <img
+                    className={classes.svg}
+                    src={require("../../../assets/images/add_files.svg")}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <Typography variant="subtitle1" align="center">
+                    Drag & Drop or
+                  </Typography>
+                </Grid>
+                <Grid item>
+                  <Button variant="outlined" color="primary">
+                    Click to upload
+                  </Button>
+                </Grid>
+                <Grid item xs={12}>
+                  <Typography align="center" variant="body2">
+                    Accepted file formats: .png, .jpg, .gif
+                  </Typography>
+                </Grid>
               </Grid>
             </Grid>
           </div>
@@ -93,3 +119,10 @@ export default () => {
     </div>
   );
 };
+function mapDispatchToProps(dispatch) {
+  return {
+    receivePhoto: (e) => dispatch(receivePhoto(e)),
+  };
+}
+
+export default connect(null, mapDispatchToProps)(Pattern);
