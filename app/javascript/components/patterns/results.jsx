@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Button, Typography, Grid } from "@material-ui/core";
-import { pixelit } from "../../packs/pixelit/dist/pixelitmin";
+import { pixelit } from "../../packs/pixelit/dist/pixelit";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
@@ -30,7 +30,7 @@ export default () => {
         spacing={2}
       >
         <Grid item>
-          <Typography variant="h1">Pattern Preview</Typography>
+          <Typography variant="h1">Results</Typography>
         </Grid>
         <Grid item>
           <img

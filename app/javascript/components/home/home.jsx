@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
+import { Button, Grid, MobileStepper, Typography } from "@material-ui/core";
+import { KeyboardArrowLeft, KeyboardArrowRight } from "@material-ui/icons";
+import React, { useEffect, useState } from "react";
+
 import { makeStyles } from "@material-ui/core/styles";
 import { useResizeDetector } from "react-resize-detector";
-// components
-import { Button, Typography, Grid, MobileStepper } from "@material-ui/core";
-// icons
-import { KeyboardArrowLeft, KeyboardArrowRight } from "@material-ui/icons";
 
 const useStyles = makeStyles({
   header: {
@@ -16,6 +15,7 @@ const useStyles = makeStyles({
   },
   svg: {
     width: "100%",
+    maxHeight: "380px",
   },
   gradient: {
     background: "linear-gradient(45deg, #6C63FF 30%, #3700B3 90%)",
@@ -27,15 +27,36 @@ const useStyles = makeStyles({
   bottomBg: {
     backgroundColor: "#fff",
     width: "100%",
-    height: ({ height }) => `calc(20vh + ${height}px)`,
+    height: ({ height }) => height,
     marginTop: ({ height }) => -height / 2,
+    overflow: "hidden",
+  },
+  button: {
+    marginTop: ({ height }) => height / 2,
   },
 });
+
+const steps = [
+  {
+    text: "Create custom latch hook patterns with any photo.",
+    img: require("../../../assets/images/home1.svg"),
+  },
+  {
+    text: "Upload photo and select photo options.",
+    img: require("../../../assets/images/home2.svg"),
+  },
+  {
+    text: "Download photo and start latchifying your creation.",
+    img: require("../../../assets/images/home3.svg"),
+  },
+];
 
 export default () => {
   const { height, ref } = useResizeDetector();
   const [imgHeight, setImgHeight] = useState(0);
   const [activeStep, setActiveStep] = useState(0);
+  const [activeStepImage, setActiveStepImage] = useState(steps[0].img);
+  const [activeStepText, setActiveStepText] = useState(steps[0].text);
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -47,6 +68,10 @@ export default () => {
   const classes = useStyles({ height: imgHeight });
 
   useEffect(() => setImgHeight(height), [height]);
+
+  useEffect(() => setActiveStepImage(steps[activeStep].img), [activeStep]);
+
+  useEffect(() => setActiveStepText(steps[activeStep].text), [activeStep]);
 
   return (
     <Grid
@@ -70,16 +95,12 @@ export default () => {
       </Grid>
       <Grid item>
         <Typography className={classes.subheader} variant="h3" align="center">
-          Create custom latch hook patterns with any photo.
+          {activeStepText}
         </Typography>
       </Grid>
 
-      <Grid item className={classes.topBg} xs={8} sm={6} md={5} lg={4}>
-        <img
-          ref={ref}
-          className={classes.svg}
-          src={require("../../../assets/images/home3.svg")}
-        />
+      <Grid item className={classes.topBg} xs={9} sm={7} md={5} lg={4}>
+        <img ref={ref} className={classes.svg} src={activeStepImage} />
       </Grid>
       <Grid
         container
@@ -88,9 +109,9 @@ export default () => {
         justify="center"
         alignItems="center"
       >
-        <Grid item>
-          <Button variant="contained" color="secondary">
-            Get Started
+        <Grid item className={classes.button}>
+          <Button variant="contained" color="primary" size="large">
+            <Typography variant="button">GET STARTED</Typography>
           </Button>
         </Grid>
       </Grid>
