@@ -2,6 +2,7 @@ import { Button, Grid, Typography } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import { connect, useSelector } from "react-redux";
 
+import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { pixelit } from "../../packs/pixelit/dist/pixelit";
 
@@ -53,15 +54,19 @@ export const Results = (props) => {
           </Typography>
         </Grid>
         <Grid item>
-          <Button color="primary" variant="outlined">
-            Sign Up
-          </Button>
-          <Typography variant="subtitle1" align="center">
+          <Link to="/signup">
+            <Button color="primary" variant="outlined">
+              <Typography variant="button">Sign Up</Typography>
+            </Button>
+          </Link>
+          <Typography variant="body1" align="center">
             or
           </Typography>
-          <Button color="primary" variant="outlined">
-            Log In
-          </Button>
+          <Link to="/login">
+            <Button color="primary" variant="outlined">
+              <Typography variant="button">Log In</Typography>
+            </Button>
+          </Link>
         </Grid>
       </Grid>
     </div>

@@ -28,7 +28,7 @@ const useStyles = makeStyles({
   bottomBg: {
     backgroundColor: "#fff",
     width: "100%",
-    height: ({ height }) => height,
+    height: ({ height }) => height + 8,
     marginTop: ({ height }) => -height / 2,
     overflow: "hidden",
   },

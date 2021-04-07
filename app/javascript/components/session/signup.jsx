@@ -1,5 +1,6 @@
+import { Button, Grid, TextField, Typography } from "@material-ui/core";
 import React, { useState } from "react";
-import { Button, TextField, Typography, Grid } from "@material-ui/core";
+
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
@@ -7,8 +8,9 @@ const useStyles = makeStyles({
     width: "20vw",
     height: "auto",
   },
-  input: {
-    width: "40vw",
+  fullWidth: {
+    width: "100vw",
+    padding: "5vh 0",
   },
 });
 
@@ -42,37 +44,43 @@ const Signup = (props) => {
         />
       </Grid>
       <form name="signup">
-        <Grid item className={classes.input}>
-          <TextField
-            autoFocus
-            required
-            fullWidth
-            name="email"
-            label="Email"
-            variant="outlined"
-          ></TextField>
-        </Grid>
-        <Grid item>
-          <TextField
-            autoFocus
-            required
-            fullWidth
-            margin="normal"
-            name="password"
-            label="Password"
-            type="password"
-            variant="outlined"
-          ></TextField>
-        </Grid>
-        <Grid item>
-          <TextField
-            autoFocus
-            fullWidth
-            margin="normal"
-            label="Confirm Password"
-            type="password"
-            variant="outlined"
-          ></TextField>
+        <Grid
+          container
+          item
+          className={classes.fullWidth}
+          spacing={4}
+          justify="center"
+        >
+          <Grid item xs={10} sm={9} md={8} lg={7}>
+            <TextField
+              autoFocus
+              required
+              fullWidth
+              name="email"
+              label="Email"
+              variant="outlined"
+            ></TextField>
+          </Grid>
+          <Grid item xs={10} sm={9} md={8} lg={7}>
+            <TextField
+              autoFocus
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              variant="outlined"
+            ></TextField>
+            <TextField
+              autoFocus
+              required
+              fullWidth
+              name="confirm_password"
+              label="Confirm Password"
+              type="password"
+              variant="outlined"
+            ></TextField>
+          </Grid>
         </Grid>
       </form>
       <Grid item>
