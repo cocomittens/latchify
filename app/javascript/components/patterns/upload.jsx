@@ -1,10 +1,10 @@
 import { Button, Grid, Typography } from "@material-ui/core";
-import { RECEIVE_PHOTO, receivePhoto } from "../../actions/pattern";
 import React, { useState } from "react";
 
 import ImageUploading from "react-images-uploading";
 import { connect } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
+import { receivePhoto } from "../../actions/pattern";
 
 const useStyles = makeStyles({
   svg: {

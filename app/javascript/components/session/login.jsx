@@ -1,6 +1,6 @@
 import { Button, Grid, TextField, Typography } from "@material-ui/core";
-import React, { useState } from "react";
 
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
@@ -17,9 +17,9 @@ const useStyles = makeStyles({
 const Login = (props) => {
   const classes = useStyles();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const handleSubmit = (e) => {
+    const email = document.forms["login"]["email"].value;
+    const password = document.forms["login"]["password"].value;
     e.preventDefault();
     props.login({ email, password }).then(() => props.history.push("/success"));
   };
@@ -75,7 +75,7 @@ const Login = (props) => {
       </form>
       <Grid item>
         <Button color="primary" variant="contained" onClick={handleSubmit}>
-          Log In
+          LOG IN
         </Button>
       </Grid>
     </Grid>

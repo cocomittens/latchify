@@ -1,6 +1,6 @@
 import { Button, Grid, TextField, Typography } from "@material-ui/core";
-import React, { useState } from "react";
 
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
@@ -63,7 +63,6 @@ const Signup = (props) => {
           </Grid>
           <Grid item xs={10} sm={9} md={8} lg={7}>
             <TextField
-              autoFocus
               required
               fullWidth
               name="password"
@@ -71,9 +70,9 @@ const Signup = (props) => {
               type="password"
               variant="outlined"
             ></TextField>
+          </Grid>
+          <Grid item xs={10} sm={9} md={8} lg={7}>
             <TextField
-              autoFocus
-              required
               fullWidth
               name="confirm_password"
               label="Confirm Password"
@@ -84,8 +83,8 @@ const Signup = (props) => {
         </Grid>
       </form>
       <Grid item>
-        <Button color="secondary" variant="contained" onClick={handleSubmit}>
-          Sign Up
+        <Button color="primary" variant="contained" onClick={handleSubmit}>
+          <Typography variant="button">SIGN UP</Typography>
         </Button>
       </Grid>
     </Grid>
